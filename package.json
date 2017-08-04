@@ -5,7 +5,6 @@
   "main": "index.js",
   "dependencies": {
     "argon2": "^0.16.1",
-    "credential-plus": "^0.7.0",
     "lodash": "^4.17.4"
   },
   "devDependencies": {
@@ -13,7 +12,8 @@
     "codecov": "^2.2.0",
     "nyc": "^11.0.3",
     "pify": "^3.0.0",
-    "xo": "*"
+    "xo": "*",
+    "credential-plus": "^0.7.0"
   },
   "engines": {
     "node": ">=4"
