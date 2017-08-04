@@ -1,0 +1,69 @@
+{
+  "name": "credential-plus-argon2",
+  "version": "1.0.0",
+  "description": "argon2 hash function implementation for credential-plus",
+  "main": "index.js",
+  "dependencies": {
+    "argon2": "^0.16.1",
+    "credential-plus": "^0.7.0",
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "ava": "*",
+    "codecov": "^2.2.0",
+    "nyc": "^11.0.3",
+    "pify": "^3.0.0",
+    "xo": "*"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "xo && nyc ava --verbose",
+    "coverage": "nyc npm test && nyc report --reporter=text-lcov > coverage/coverage.lcov && codecov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonepri/credential-plus-argon2.git"
+  },
+  "author": {
+    "name": "Simone Primarosa",
+    "email": "simone.pri@hotmail.it"
+  },
+  "keywords": [
+    "credential plus",
+    "credential",
+    "password",
+    "passwords",
+    "hashing",
+    "verification",
+    "hash function",
+    "hash",
+    "auth",
+    "authorization",
+    "authentication",
+    "security",
+    "login",
+    "sign in",
+    "salt",
+    "rainbow",
+    "brute",
+    "brute force",
+    "attack",
+    "stretching",
+    "timining attack",
+    "PBKDF",
+    "PBKDF2",
+    "bcrypt",
+    "scrypt",
+    "argon2"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/simonepri/credential-plus-argon2/issues"
+  },
+  "homepage": "https://github.com/simonepri/credential-plus-argon2#readme",
+  "xo": {
+    "space": true
+  }
+}
