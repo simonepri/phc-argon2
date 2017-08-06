@@ -16,3 +16,16 @@ test('should not verify a wrong password with argon2', async t => {
   t.true(typeof hash === 'string');
   t.false(await pify(m.verify)(hash, 'hello world'));
 });
+
+test.serial('invalid password with argon2', async t => {
+  let err = await t.throws(pify(m.hash)(undefined, {func: 'argon2'}));
+  t.true(err instanceof Error);
+  err = await t.throws(pify(m.hash)('', {func: 'argon2'}));
+  t.true(err instanceof Error);
+  err = await t.throws(pify(m.hash)(['unicorn'], {func: 'argon2'}));
+  t.true(err instanceof Error);
+  err = await t.throws(pify(m.hash)(() => console.log('lalala'), {func: 'argon2'}));
+  t.true(err instanceof Error);
+  err = await t.throws(pify(m.hash)(null, {func: 'argon2'}));
+  t.true(err instanceof Error);
+});
