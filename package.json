@@ -13,7 +13,7 @@
     "nyc": "^11.0.3",
     "pify": "^3.0.0",
     "xo": "*",
-    "credential-plus": "^0.7.0"
+    "credential-plus": "*"
   },
   "engines": {
     "node": ">=4"
