@@ -29,3 +29,17 @@ test.serial('should throw an error trying to hash a non valid string', async t =
   err = await t.throws(pify(m.hash)(null, {func: 'argon2'}));
   t.true(err instanceof Error);
 });
+
+test('should throw an error trying to verify a non valid string', async t => {
+  const hash = await pify(m.hash)('Hello world', {func: 'argon2'});
+  let err = await t.throws(pify(m.verify)(hash, undefined));
+  t.true(err instanceof Error);
+  err = await t.throws(pify(m.verify)(hash, ''));
+  t.true(err instanceof Error);
+  err = await t.throws(pify(m.verify)(hash, ['unicorn']));
+  t.true(err instanceof Error);
+  err = await t.throws(pify(m.verify)(hash, () => console.log('lalala')));
+  t.true(err instanceof Error);
+  err = await t.throws(pify(m.verify)(hash, null));
+  t.true(err instanceof Error);
+});
