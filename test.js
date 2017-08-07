@@ -17,7 +17,7 @@ test('should not verify a wrong password with argon2', async t => {
   t.false(await pify(m.verify)(hash, 'hello world'));
 });
 
-test.serial('invalid password with argon2', async t => {
+test.serial('should throw an error trying to hash a non valid string', async t => {
   let err = await t.throws(pify(m.hash)(undefined, {func: 'argon2'}));
   t.true(err instanceof Error);
   err = await t.throws(pify(m.hash)('', {func: 'argon2'}));
