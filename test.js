@@ -17,28 +17,28 @@ test('should not verify a wrong password with argon2', async t => {
 });
 
 test.serial('should throw an error trying to hash a non valid string', async t => {
-  let err = await t.throws(pify(m.hash)(undefined, {func: 'argon2'}));
+  let err = await t.throws(m.hash(undefined, {func: 'argon2'}));
   t.true(err instanceof Error);
-  err = await t.throws(pify(m.hash)('', {func: 'argon2'}));
+  err = await t.throws(m.hash('', {func: 'argon2'}));
   t.true(err instanceof Error);
-  err = await t.throws(pify(m.hash)(['unicorn'], {func: 'argon2'}));
+  err = await t.throws(m.hash(['unicorn'], {func: 'argon2'}));
   t.true(err instanceof Error);
-  err = await t.throws(pify(m.hash)(() => console.log('lalala'), {func: 'argon2'}));
+  err = await t.throws(m.hash(() => console.log('lalala'), {func: 'argon2'}));
   t.true(err instanceof Error);
-  err = await t.throws(pify(m.hash)(null, {func: 'argon2'}));
+  err = await t.throws(m.hash(null, {func: 'argon2'}));
   t.true(err instanceof Error);
 });
 
 test('should throw an error trying to verify a non valid string', async t => {
-  const hash = await pify(m.hash)('Hello world', {func: 'argon2'});
-  let err = await t.throws(pify(m.verify)(hash, undefined));
+  const hash = await m.hash('Hello world', {func: 'argon2'});
+  let err = await t.throws(m.verify(hash, undefined));
   t.true(err instanceof Error);
-  err = await t.throws(pify(m.verify)(hash, ''));
+  err = await t.throws(m.verify(hash, ''));
   t.true(err instanceof Error);
-  err = await t.throws(pify(m.verify)(hash, ['unicorn']));
+  err = await t.throws(m.verify(hash, ['unicorn']));
   t.true(err instanceof Error);
-  err = await t.throws(pify(m.verify)(hash, () => console.log('lalala')));
+  err = await t.throws(m.verify(hash, () => console.log('lalala')));
   t.true(err instanceof Error);
-  err = await t.throws(pify(m.verify)(hash, null));
+  err = await t.throws(m.verify(hash, null));
   t.true(err instanceof Error);
 });
