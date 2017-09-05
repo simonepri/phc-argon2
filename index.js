@@ -6,6 +6,7 @@ const _ = require('lodash');
 
 /**
  * Default configurations used to generate a new hash.
+ * @private
  * @type {Object}
  */
 const defaultConfigs = {
@@ -25,41 +26,30 @@ const defaultConfigs = {
 };
 
 /**
- * Generates an unique hash.
+ * Generates an unique hash and the data needed to verify it.
+ * @public
  * @param  {string} password The password to hash.
- * @param  {object} configs  Configurations related to the hashing function.
- * @param  {generateCallback} callback Called after the hash has been generated.
+ * @param  {object} configs Configurations related to the hashing function.
+ * @returns {Promise<string>} A promise that contains the generated hash string.
  */
- /**
-  * @callback generateCallback
-  * @param  {object} err  Possible error thrown.
-  * @param  {string} hash Generated hash string.
-  */
-function hashFunc(password, configs, callback) {
+function hashFunc(password, configs) {
   const cfgs = _.extend(defaultConfigs, configs);
 
   cfgs.raw = false;
 
-  argon2.hash(password, cfgs)
-    .then(hash => callback(null, hash))
-    .catch(callback);
+  return argon2.hash(password, cfgs);
 }
 
 /**
  * Determines whether or not the user's input matches the stored password.
- * @param  {object} hash Previously hashed password.
- * @param  {password} password User's password input.
- * @param  {hashCallback} callback Called after the hash has been computed.
+ * @public
+ * @param  {string} hash Stringified hash object generated from this package.
+ * @param  {string} input User's password input.
+ * @returns {Promise<boolean>} A promise that contains a boolean that is true if
+ *   if the hash computed for the input matches.
  */
- /**
-  * @callback hashCallback
-  * @param  {object} err Possible error thrown.
-  * @param  {string} match True if the hash computed for the input matches.
-  */
-function verifyFunc(hash, password, callback) {
-  argon2.verify(hash, password)
-    .then(match => callback(null, match))
-    .catch(callback);
+function verifyFunc(hash, password) {
+  return argon2.verify(hash, password);
 }
 
 module.exports = {
