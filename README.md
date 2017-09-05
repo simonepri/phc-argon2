@@ -17,7 +17,7 @@
 </div>
 <div align="center">
   <sub>
-    If you find a security flaw in this code, PLEASE <a href="./issues/new">report it</a>.
+    If you find a security flaw in this code, PLEASE <a href="https://github.com/simonepri/credential-plus-argon2/issues/new">report it</a>.
   </sub>
 </div>
 
