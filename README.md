@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://github.com/simonepri/credential-plus"><img src="./media/credential-plus.png" alt="credential-plus-argon2" /></a>
+  <a href="https://github.com/simonepri/credential-plus"><img src="https://github.com/simonepri/credential-plus/blob/master/media/credential-plus.png?raw=true" alt="credential-plus-argon2" /></a>
 </h1>
 <div align="center">
   <a href="https://travis-ci.org/simonepri/credential-plus-argon2"> <img src="https://travis-ci.org/simonepri/credential-plus-argon2.svg?branch=master" alt="build status"></a>
