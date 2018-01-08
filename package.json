@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "ava": "*",
-    "codecov": "^2.2.0",
+    "codecov": "^3.0.0",
     "nyc": "^11.0.3",
     "xo": "*",
     "credential-plus": "2.x"
