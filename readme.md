@@ -1,6 +1,8 @@
-<h1 align="center">
-  <b>@upash/argon2</b>
-</h1>
+<p align="center">
+  <a href="https://github.com/simonepri/upash">
+    <img src="https://github.com/simonepri/upash/raw/upash/media/upash.png" alt="upash" width="600"/>
+  </a>
+</p>
 <p align="center">
   <!-- CI - TravisCI -->
   <a href="https://travis-ci.org/simonepri/upash-argon2">
