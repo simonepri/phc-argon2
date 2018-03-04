@@ -89,19 +89,16 @@ npm install --save @upash/argon2
 ```js
 const argon2 = require('@upash/argon2');
 
-// Hash and verify with argon2 using default secure configs
-argon2.hash('We are all unicorns')
-  .then(hash => {
-    console.log(hash);
-    // => "$argon2i$v=19$m=4096,t=3,p=1$mTFYKhlcxmjS/v6Y8aEd5g$IKGY+vj0MdezVEKHQ9bvjpROoR5HPun5/AUCjQrHSIs"
-    // You can store this directly in your database.
+// Hash and verify with argon2 using default secure configs.
+const hash = argon2.hash('We are all unicorns');
+console.log(hash);
+// => "$argon2i$v=19$m=4096,t=3,p=1$mTFYKhlcxmjS/v6Y8aEd5g$IKGY+vj0MdezVEKHQ9bvjpROoR5HPun5/AUCjQrHSIs"
+// You can store this directly in your database.
 
-    argon2.verify(hash, 'We are all unicorns')
-      .then(match => {
-        console.log(match);
-        // => true
-      });
-  });
+// Then you can verify against it in this way.
+const match = argon2.verify(hash, 'We are all unicorns');
+console.log(match);
+// => true
 ```
 
 ## API
