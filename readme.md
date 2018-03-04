@@ -49,8 +49,8 @@
   <br/>
 
   <!-- Version - npm -->
-  <a href="https://www.npmjs.com/package/upash-argon2">
-    <img src="https://img.shields.io/npm/v/upash-argon2.svg" alt="Latest version on npm" />
+  <a href="https://www.npmjs.com/package/@upash/argon2">
+    <img src="https://img.shields.io/npm/v/@upash/argon2.svg" alt="Latest version on npm" />
   </a>
   <!-- License - MIT -->
   <a href="https://github.com/simonepri/upash-argon2/tree/master/license">
