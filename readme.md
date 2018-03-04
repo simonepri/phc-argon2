@@ -169,7 +169,7 @@ Thanks!
 
 ## Authors
 - **Simone Primarosa** - *Follow* me on
-*Github* ([:octocat:@simonepri][github:simonepri]) and on 
+*Github* ([:octocat:@simonepri][github:simonepri]) and on
 *Twitter* ([🐦@simonepri][twitter:simonepri])
 
 See also the list of [contributors][contributors] who participated in this project.
