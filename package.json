@@ -1,0 +1,55 @@
+{
+  "name": "@upash/argon2",
+  "version": "0.0.0",
+  "description": "Easy to use Unified API for argon2 password hashing algorithm",
+  "license": "MIT",
+  "homepage": "https://github.com/simonepri/upash-argon2#readme",
+  "repository": "github:simonepri/upash",
+  "bugs": {
+    "url": "https://github.com/simonepri/upash-argon2/issues",
+    "email": "simonepri@outlook.com"
+  },
+  "author": "Simone Primarosa <simonepri@outlook.com> (https://simoneprimarosa.com)",
+  "contributors": [
+    "Simone Primarosa <simonepri@outlook.com> (https://simoneprimarosa.com)"
+  ],
+  "keywords": [],
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "xo &&nyc ava",
+    "release": "np",
+    "update": "npm-check -u"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "argon2": "^0.16.1"
+  },
+  "devDependencies": {
+    "ava": "*",
+    "np": "*",
+    "npm-check": "*",
+    "nyc": "*",
+    "xo": "*"
+  },
+  "ava": {
+    "verbose": true
+  },
+  "nyc": {
+    "reporter": [
+      "lcovonly",
+      "text"
+    ]
+  },
+  "xo": {
+    "prettier": true,
+    "space": true
+  }
+}
