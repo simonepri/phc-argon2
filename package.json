@@ -1,6 +1,6 @@
 {
   "name": "credential-plus-argon2",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Argon2 password hashing function for credential-plus",
   "main": "index.js",
   "dependencies": {
