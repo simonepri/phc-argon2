@@ -82,7 +82,7 @@ In particular, this package wraps the [argon2][npm:argon2]
 package providing a simplified API with up to date secure default configurations.
 
 Do you believe that this is *useful*?
-It has *saved you time*?
+Has it *saved you time*?
 Or maybe you simply *like it*?  
 If so, [show your appreciation with a Star ⭐️][start].
 
