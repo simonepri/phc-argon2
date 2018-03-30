@@ -1,0 +1,88 @@
+{
+  "version": "1.1.4",
+  "name": "@phc/argon2",
+  "description": "Node.JS Argon2 password hashing algorithm following the PHC string format",
+  "license": "MIT",
+  "homepage": "https://github.com/simonepri/phc-argon2#readme",
+  "repository": "github:simonepri/phc-argon2",
+  "bugs": {
+    "url": "https://github.com/simonepri/phc-argon2/issues",
+    "email": "simonepri@outlook.com"
+  },
+  "author": "Simone Primarosa <simonepri@outlook.com> (https://simoneprimarosa.com)",
+  "contributors": [
+    "Simone Primarosa <simonepri@outlook.com> (https://simoneprimarosa.com)"
+  ],
+  "keywords": [
+    "brute",
+    "brute force",
+    "credential",
+    "credential-plus",
+    "crypto",
+    "hash",
+    "function",
+    "hashing",
+    "password",
+    "password-argon2",
+    "passwords",
+    "pbkdf",
+    "argon2",
+    "argon2-password",
+    "psswrd",
+    "pswd",
+    "rainbow",
+    "safe",
+    "safe",
+    "salt",
+    "secure",
+    "security",
+    "stretching",
+    "strong",
+    "timining",
+    "attack",
+    "verification",
+    "verify"
+  ],
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "bench": "node bench.js",
+    "test": "xo &&nyc ava",
+    "release": "np",
+    "update": "npm-check -u"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@phc/format": "^0.3.4",
+    "argon2": "^0.16.2"
+  },
+  "devDependencies": {
+    "ava": "*",
+    "execa": "^0.10.0",
+    "np": "*",
+    "npm-check": "*",
+    "nyc": "*",
+    "sympact": "*",
+    "xo": "*"
+  },
+  "ava": {
+    "verbose": true
+  },
+  "nyc": {
+    "reporter": [
+      "lcovonly",
+      "text"
+    ]
+  },
+  "xo": {
+    "prettier": true,
+    "space": true
+  }
+}
