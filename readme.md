@@ -143,7 +143,7 @@ Micron Technology Inc.  LPDDR3  4294.967 MB  1867 MHz
 </details>
 
 <details>
-<summary><strong>Default options</strong> ↴</summary>
+<summary><strong>Default options</strong> - <i>{iterations:3, memory:4096, parallelism:1, variant:'id'}</i> ↴</summary>
 
 ```
 CPU Usage (avarage ± σ)  CPU Usage Range (min … max)
@@ -167,7 +167,7 @@ Instant  CPU Usage  RAM Usage  PIDS
 </details>
 
 <details>
-<summary><strong>5 iterations</strong> ↴</summary>
+<summary><strong>5 iterations</strong> - <i>{iterations:5, memory:4096, parallelism:1, variant:'id'}</i> ↴</summary>
 
 ```
 CPU Usage (avarage ± σ)  CPU Usage Range (min … max)
@@ -192,7 +192,7 @@ Instant  CPU Usage  RAM Usage  PIDS
 </details>
 
 <details>
-<summary><strong>10 iterations</strong> ↴</summary>
+<summary><strong>10 iterations</strong> - <i>{iterations:10, memory:4096, parallelism:1, variant:'id'}</i> ↴</summary>
 
 ```
 CPU Usage (avarage ± σ)  CPU Usage Range (min … max)
@@ -217,7 +217,7 @@ Instant  CPU Usage  RAM Usage  PIDS
 </details>
 
 <details>
-<summary><strong>25 iterations</strong> ↴</summary>
+<summary><strong>25 iterations</strong> - <i>{iterations:25, memory:4096, parallelism:1, variant:'id'}</i> ↴</summary>
 
 ```
 CPU Usage (avarage ± σ)  CPU Usage Range (min … max)
@@ -243,7 +243,7 @@ Instant  CPU Usage  RAM Usage  PIDS
 </details>
 
 <details>
-<summary><strong>50 iterations</strong> ↴</summary>
+<summary><strong>50 iterations</strong> - <i>{iterations:50, memory:4096, parallelism:1, variant:'id'}</i> ↴</summary>
 
 ```
 CPU Usage (avarage ± σ)  CPU Usage Range (min … max)
@@ -272,7 +272,7 @@ Instant  CPU Usage  RAM Usage  PIDS
 </details>
 
 <details>
-<summary><strong>100 iterations</strong> ↴</summary>
+<summary><strong>100 iterations</strong> - <i>{iterations:100, memory:4096, parallelism:1, variant:'id'}</i> ↴</summary>
 
 ```
 CPU Usage (avarage ± σ)  CPU Usage Range (min … max)
@@ -307,7 +307,7 @@ Instant  CPU Usage  RAM Usage  PIDS
 </details>
 
 <details>
-<summary><strong>16˙384 KiB of memory</strong> ↴</summary>
+<summary><strong>16˙384 KiB of memory</strong> - <i>{iterations:3, memory:16384, parallelism:1, variant:'id'}</i> ↴</summary>
 
 ```
 CPU Usage (avarage ± σ)  CPU Usage Range (min … max)
@@ -333,7 +333,7 @@ Instant  CPU Usage  RAM Usage  PIDS
 </details>
 
 <details>
-<summary><strong>65˙536 KiB of memory</strong> ↴</summary>
+<summary><strong>65˙536 KiB of memory</strong> - <i>{iterations:3, memory:65536, parallelism:1, variant:'id'}</i> ↴</summary>
 
 ```
 CPU Usage (avarage ± σ)  CPU Usage Range (min … max)
@@ -363,7 +363,7 @@ Instant  CPU Usage  RAM Usage  PIDS
 </details>
 
 <details>
-<summary><strong>262˙144 KiB of memory</strong> ↴</summary>
+<summary><strong>262˙144 KiB of memory</strong> - <i>{iterations:3, memory:262144, parallelism:1, variant:'id'}</i> ↴</summary>
 
 ```
 CPU Usage (avarage ± σ)  CPU Usage Range (min … max)
