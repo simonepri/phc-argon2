@@ -419,9 +419,9 @@ Instant  CPU Usage  RAM Usage   PIDS
 
 <!--
 ## Test vectors
-The [argon2 paper][paper:test] lists four test vectors to test implementation.  
-The examples below will show you how to produce these test vectors from within
-this module.
+
+The [scrypt paper][paper:test] lists four test vectors to test implementation.  
+This package implements them [here][tvec].
 -->
 
 ## API
@@ -519,6 +519,8 @@ This project is licensed under the MIT License - see the [license][license] file
 [license]: https://github.com/simonepri/phc-argon2/tree/master/license
 [contributing]: https://github.com/simonepri/phc-argon2/tree/master/.github/contributing.md
 
+[tvec]: https://github.com/simonepri/phc-argon2/tree/master/test/vectors.js
+
 [scrypt]: https://github.com/simonepri/phc-scrypt
 [bcrypt]: https://github.com/simonepri/phc-bcrypt
 [pbkdf2]: https://github.com/simonepri/phc-pbkdf2
@@ -535,5 +537,5 @@ This project is licensed under the MIT License - see the [license][license] file
 [specs:a2var]: https://crypto.stackexchange.com/a/49969
 [specs:Argon2]: https://en.wikipedia.org/wiki/Argon2
 
-[paper]: https://tools.ietf.org/html/draft-irtf-cfrg-argon2-02
-[paper:test]: https://tools.ietf.org/html/draft-irtf-cfrg-argon2-02#section-6
+[paper]: https://tools.ietf.org/html/draft-irtf-cfrg-argon2-03
+[paper:test]: https://tools.ietf.org/html/draft-irtf-cfrg-argon2-03#section-6
