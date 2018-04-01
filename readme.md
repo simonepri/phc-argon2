@@ -88,6 +88,8 @@ Where:
 | `<salt>` | <code>string</code> | A sequence of bits, known as a [cryptographic salt][specs:salt] encoded in [B64][specs:B64]. |
 | `<hash>` | <code>string</code> | The computed derived key by the [argon2][specs:Argon2] algorithm encoded in [B64][specs:B64]. |
 
+For more details consult the Argon2 paper [here][paper].
+
 ## Install
 
 ```bash
@@ -415,6 +417,13 @@ Instant  CPU Usage  RAM Usage   PIDS
 
 </details>
 
+<!--
+## Test vectors
+The [argon2 paper][paper:test] lists four test vectors to test implementation.  
+The examples below will show you how to produce these test vectors from within
+this module.
+-->
+
 ## API
 
 #### TOC
@@ -525,3 +534,6 @@ This project is licensed under the MIT License - see the [license][license] file
 [specs:salt]: https://en.wikipedia.org/wiki/Salt_(cryptography)
 [specs:a2var]: https://crypto.stackexchange.com/a/49969
 [specs:Argon2]: https://en.wikipedia.org/wiki/Argon2
+
+[paper]: https://tools.ietf.org/html/draft-irtf-cfrg-argon2-02
+[paper:test]: https://tools.ietf.org/html/draft-irtf-cfrg-argon2-02#section-6
