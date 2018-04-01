@@ -88,20 +88,6 @@ function hash(password, options) {
     );
   }
 
-  // Memory Validation
-  if (typeof memory !== 'number' || !Number.isInteger(memory)) {
-    return Promise.reject(
-      new TypeError("The 'memory' option must be an integer")
-    );
-  }
-  if (memory < 1 || memory > MAX_UINT32) {
-    return Promise.reject(
-      new TypeError(
-        `The 'memory' option must be in the range (1 <= memory <= ${MAX_UINT32})`
-      )
-    );
-  }
-
   // Parallelism Validation
   if (typeof parallelism !== 'number' || !Number.isInteger(parallelism)) {
     return Promise.reject(
@@ -112,6 +98,21 @@ function hash(password, options) {
     return Promise.reject(
       new TypeError(
         `The 'parallelism' option must be in the range (1 <= parallelism <= ${MAX_UINT24})`
+      )
+    );
+  }
+
+  // Memory Validation
+  if (typeof memory !== 'number' || !Number.isInteger(memory)) {
+    return Promise.reject(
+      new TypeError("The 'memory' option must be an integer")
+    );
+  }
+  const minmem = 8 * parallelism;
+  if (memory < minmem || memory > MAX_UINT32) {
+    return Promise.reject(
+      new TypeError(
+        `The 'memory' option must be in the range (${minmem} <= memory <= ${MAX_UINT32})`
       )
     );
   }
@@ -199,21 +200,6 @@ function verify(phcstr, password) {
     );
   }
 
-  // Memory Validation
-  if (
-    typeof phcobj.params.m !== 'number' ||
-    !Number.isInteger(phcobj.params.m)
-  ) {
-    return Promise.reject(new TypeError("The 'm' param must be an integer"));
-  }
-  if (phcobj.params.m < 8 || phcobj.params.m > MAX_UINT32) {
-    return Promise.reject(
-      new TypeError(
-        `The 'm' param must be in the range (8 <= m <= ${MAX_UINT32})`
-      )
-    );
-  }
-
   // Parallelism Validation
   if (
     typeof phcobj.params.p !== 'number' ||
@@ -225,6 +211,22 @@ function verify(phcstr, password) {
     return Promise.reject(
       new TypeError(
         `The 'p' param must be in the range (1 <= p <= ${MAX_UINT24})`
+      )
+    );
+  }
+
+  // Memory Validation
+  if (
+    typeof phcobj.params.m !== 'number' ||
+    !Number.isInteger(phcobj.params.m)
+  ) {
+    return Promise.reject(new TypeError("The 'm' param must be an integer"));
+  }
+  const minmem = 8 * phcobj.params.p;
+  if (phcobj.params.m < minmem || phcobj.params.m > MAX_UINT32) {
+    return Promise.reject(
+      new TypeError(
+        `The 'm' param must be in the range (${minmem} <= m <= ${MAX_UINT32})`
       )
     );
   }
