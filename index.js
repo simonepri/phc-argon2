@@ -195,8 +195,8 @@ function hash(password, options) {
     return argon2.hash(password, params).then(hash => {
       const phcstr = phc.serialize({
         id: `argon2${variant}`,
+        version,
         params: {
-          v: version,
           t: iterations,
           m: memory,
           p: parallelism,
@@ -246,20 +246,20 @@ function verify(phcstr, password) {
   const variant = idparts[1];
 
   // Version Validation
-  if (typeof phcobj.params.v === 'undefined') {
-    phcobj.params.v = versions[0]; // Old Argon2 strings without the version.
+  if (typeof phcobj.version === 'undefined') {
+    phcobj.version = versions[0]; // Old Argon2 strings without the version.
   } else if (
-    typeof phcobj.params.v !== 'number' ||
-    !Number.isInteger(phcobj.params.v)
+    typeof phcobj.version !== 'number' ||
+    !Number.isInteger(phcobj.version)
   ) {
     return Promise.reject(new TypeError("The 'v' param must be an integer"));
   }
-  if (versions.indexOf(phcobj.params.v) === -1) {
+  if (versions.indexOf(phcobj.version) === -1) {
     return Promise.reject(
-      new TypeError(`Unsupported ${phcobj.params.v} version`)
+      new TypeError(`Unsupported ${phcobj.version} version`)
     );
   }
-  const version = phcobj.params.v;
+  const version = phcobj.version;
 
   // Iterations Validation
   if (
