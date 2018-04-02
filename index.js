@@ -82,6 +82,7 @@ function pify(fn) {
 function genSalt(length) {
   return pify(crypto.randomBytes)(length);
 }
+
 /**
  * Computes the hash string of the given password in the PHC format using argon2
  * package.
