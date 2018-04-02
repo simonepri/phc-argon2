@@ -172,6 +172,8 @@ function hash(password, options) {
     );
   }
 
+  options.raw = false;
+
   return genSalt(saltSize).then(salt => {
     return argon2.hash(password, {
       type: variants[variant],
