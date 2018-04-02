@@ -1,6 +1,7 @@
 /* eslint-disable max-params,capitalized-comments,complexity */
 'use strict';
 
+const crypto = require('crypto');
 const argon2 = require('argon2');
 const phc = require('@phc/format');
 
@@ -42,6 +43,36 @@ const variants = Object.freeze({
   id: argon2.argon2id,
 });
 
+/**
+ * Promisify a function.
+ * @private
+ * @param  {Function} fn The function to promisify.
+ * @return {Function} The promisified function.
+ */
+function pify(fn) {
+  return function() {
+    return new Promise((resolve, reject) => {
+      // eslint-disable-next-line prefer-rest-params
+      const args = Array.prototype.slice.call(arguments);
+      args.push((err, result) => {
+        if (err) reject(err);
+        else resolve(result);
+      });
+      fn.apply(this, args);
+    });
+  };
+}
+
+/**
+ * Generates a cryptographically secure random string for use as a password salt
+ * using Node's built-in crypto.randomBytes().
+ * @private
+ * @param  {number} length The length of the salt to be generated.
+ * @return {Promise.<string>} The salt string.
+ */
+function genSalt(length) {
+  return pify(crypto.randomBytes)(length);
+}
 /**
  * Computes the hash string of the given password in the PHC format using argon2
  * package.
@@ -141,12 +172,14 @@ function hash(password, options) {
     );
   }
 
-  return argon2.hash(password, {
-    type: variants[variant],
-    timeCost: iterations,
-    memoryCost: Math.floor(Math.log2(memory)),
-    parallelism,
-    saltSize,
+  return genSalt(saltSize).then(salt => {
+    return argon2.hash(password, {
+      type: variants[variant],
+      timeCost: iterations,
+      memoryCost: Math.floor(Math.log2(memory)),
+      parallelism,
+      salt,
+    });
   });
 }
 
