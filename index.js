@@ -22,7 +22,7 @@ const defaults = Object.freeze({
   iterations: 3,
   // memory cost, in kibibytes.
   memory: 4096,
-  // parallelism, in number of threads.
+  // parallelism, in number of threads and lanes.
   parallelism: 1,
   // The minimum recommended size for the salt is 128 bits.
   saltSize: 16,
