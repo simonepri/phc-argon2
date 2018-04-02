@@ -61,7 +61,8 @@
   },
   "dependencies": {
     "@phc/format": "^0.3.4",
-    "argon2": "^0.17.3"
+    "argon2": "^0.17.3",
+    "tsse": "^1.1.4"
   },
   "devDependencies": {
     "ava": "*",

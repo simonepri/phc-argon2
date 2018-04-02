@@ -1,8 +1,9 @@
-/* eslint-disable max-params,capitalized-comments,complexity */
+/* eslint-disable max-params,capitalized-comments,complexity,prefer-destructuring */
 'use strict';
 
 const crypto = require('crypto');
 const argon2 = require('argon2');
+const tsse = require('tsse');
 const phc = require('@phc/format');
 
 const MAX_UINT32 = 4294967295; // 2**32 - 1
@@ -42,6 +43,14 @@ const variants = Object.freeze({
   d: argon2.argon2d,
   id: argon2.argon2id,
 });
+
+/**
+ * Supported Argon2 versions.
+ */
+const versions = [
+  0x10, // 1.0 (16)
+  0x13, // 1.3 (19)
+];
 
 /**
  * Promisify a function.
@@ -104,6 +113,7 @@ function hash(password, options) {
   const memory = options.memory || defaults.memory;
   const parallelism = options.parallelism || defaults.parallelism;
   const saltSize = options.saltSize || defaults.saltSize;
+  const version = versions[versions.length - 1];
 
   // Iterations Validation
   if (typeof iterations !== 'number' || !Number.isInteger(iterations)) {
@@ -172,15 +182,29 @@ function hash(password, options) {
     );
   }
 
-  options.raw = false;
-
   return genSalt(saltSize).then(salt => {
-    return argon2.hash(password, {
+    const params = {
+      version,
       type: variants[variant],
       timeCost: iterations,
       memoryCost: Math.floor(Math.log2(memory)),
       parallelism,
       salt,
+      raw: true,
+    };
+    return argon2.hash(password, params).then(hash => {
+      const phcstr = phc.serialize({
+        id: `argon2${variant}`,
+        params: {
+          v: version,
+          t: iterations,
+          m: memory,
+          p: parallelism,
+        },
+        salt,
+        hash,
+      });
+      return phcstr;
     });
   });
 }
@@ -197,7 +221,7 @@ function hash(password, options) {
 function verify(phcstr, password) {
   let phcobj;
   try {
-    phcobj = phc.deserialize(phcstr, false);
+    phcobj = phc.deserialize(phcstr);
   } catch (err) {
     return Promise.reject(err);
   }
@@ -219,6 +243,23 @@ function verify(phcstr, password) {
       new TypeError(`Unsupported ${idparts[1]} variant function`)
     );
   }
+  const variant = idparts[1];
+
+  // Version Validation
+  if (typeof phcobj.params.v === 'undefined') {
+    phcobj.params.v = versions[0]; // Old Argon2 strings without the version.
+  } else if (
+    typeof phcobj.params.v !== 'number' ||
+    !Number.isInteger(phcobj.params.v)
+  ) {
+    return Promise.reject(new TypeError("The 'v' param must be an integer"));
+  }
+  if (versions.indexOf(phcobj.params.v) === -1) {
+    return Promise.reject(
+      new TypeError(`Unsupported ${phcobj.params.v} version`)
+    );
+  }
+  const version = phcobj.params.v;
 
   // Iterations Validation
   if (
@@ -234,6 +275,7 @@ function verify(phcstr, password) {
       )
     );
   }
+  const iterations = phcobj.params.t;
 
   // Parallelism Validation
   if (
@@ -249,6 +291,7 @@ function verify(phcstr, password) {
       )
     );
   }
+  const parallelism = phcobj.params.p;
 
   // Memory Validation
   if (
@@ -265,18 +308,36 @@ function verify(phcstr, password) {
       )
     );
   }
+  const memory = phcobj.params.m;
 
   // Salt Validation
   if (typeof phcobj.salt === 'undefined') {
     return Promise.reject(new TypeError('No salt found in the given string'));
   }
+  const salt = phcobj.salt;
 
   // Hash Validation
   if (typeof phcobj.hash === 'undefined') {
     return Promise.reject(new TypeError('No hash found in the given string'));
   }
+  const hash = phcobj.hash;
+  const keylen = phcobj.hash.byteLength;
 
-  return argon2.verify(phcstr, password);
+  const params = {
+    version,
+    type: variants[variant],
+    timeCost: iterations,
+    memoryCost: Math.floor(Math.log2(memory)),
+    parallelism,
+    salt,
+    hashLength: keylen,
+    raw: true,
+  };
+
+  return argon2.hash(password, params).then(newhash => {
+    const match = tsse(hash.toString('base64'), newhash.toString('base64'));
+    return match;
+  });
 }
 
 /**
