@@ -499,7 +499,6 @@ Gets the list of all identifiers supported by this hashing function.
 ## Contributing
 
 Contributions are REALLY welcome and if you find a security flaw in this code, PLEASE [report it][new issue].  
-Please check the [contributing guidelines][contributing] for more details. Thanks!
 
 ## Authors
 
@@ -517,7 +516,6 @@ This project is licensed under the MIT License - see the [license][license] file
 [contributors]: https://github.com/simonepri/phc-argon2/contributors
 
 [license]: https://github.com/simonepri/phc-argon2/tree/master/license
-[contributing]: https://github.com/simonepri/phc-argon2/tree/master/.github/contributing.md
 
 [tvec]: https://github.com/simonepri/phc-argon2/tree/master/test/vectors.js
 
