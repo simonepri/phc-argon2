@@ -1,10 +1,10 @@
 /* eslint-disable capitalized-comments,complexity,prefer-destructuring */
 'use strict';
 
-const crypto = require('crypto');
 const argon2 = require('argon2');
 const tsse = require('tsse');
 const phc = require('@phc/format');
+const gensalt = require('@kdf/salt');
 
 const MAX_UINT32 = 4294967295; // 2**32 - 1
 const MAX_UINT24 = 16777215; // 2**24 - 1
@@ -51,37 +51,6 @@ const versions = [
   0x10, // 1.0 (16)
   0x13 // 1.3 (19)
 ];
-
-/**
- * Promisify a function.
- * @private
- * @param  {Function} fn The function to promisify.
- * @return {Function} The promisified function.
- */
-function pify(fn) {
-  return function() {
-    return new Promise((resolve, reject) => {
-      // eslint-disable-next-line prefer-rest-params
-      const args = Array.prototype.slice.call(arguments);
-      args.push((err, result) => {
-        if (err) reject(err);
-        else resolve(result);
-      });
-      fn.apply(this, args);
-    });
-  };
-}
-
-/**
- * Generates a cryptographically secure random string for use as a password salt
- * using Node's built-in crypto.randomBytes().
- * @private
- * @param  {number} length The length of the salt to be generated.
- * @return {Promise.<string>} The salt string.
- */
-function genSalt(length) {
-  return pify(crypto.randomBytes)(length);
-}
 
 /**
  * Computes the hash string of the given password in the PHC format using argon2
@@ -183,7 +152,7 @@ function hash(password, options) {
     );
   }
 
-  return genSalt(saltSize).then(salt => {
+  return gensalt(saltSize).then(salt => {
     const params = {
       version,
       type: variants[variant],
@@ -214,8 +183,8 @@ function hash(password, options) {
  * Determines whether or not the hash stored inside the PHC formatted string
  * matches the hash generated for the password provided.
  * @public
- * @param  {string} password User's password input.
  * @param  {string} phcstr Secure hash string generated from this package.
+ * @param  {string} password User's password input.
  * @returns {Promise.<boolean>} A boolean that is true if the hash computed
  * for the password matches.
  */
