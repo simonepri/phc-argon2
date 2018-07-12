@@ -1,4 +1,4 @@
-/* eslint-disable max-params,capitalized-comments,complexity,prefer-destructuring */
+/* eslint-disable capitalized-comments,complexity,prefer-destructuring */
 'use strict';
 
 const crypto = require('crypto');
@@ -25,7 +25,7 @@ const defaults = Object.freeze({
   // parallelism, in number of threads and lanes.
   parallelism: 1,
   // The minimum recommended size for the salt is 128 bits.
-  saltSize: 16,
+  saltSize: 16
 });
 
 /**
@@ -41,7 +41,7 @@ const defaults = Object.freeze({
 const variants = Object.freeze({
   i: argon2.argon2i,
   d: argon2.argon2d,
-  id: argon2.argon2id,
+  id: argon2.argon2id
 });
 
 /**
@@ -49,7 +49,7 @@ const variants = Object.freeze({
  */
 const versions = [
   0x10, // 1.0 (16)
-  0x13, // 1.3 (19)
+  0x13 // 1.3 (19)
 ];
 
 /**
@@ -191,7 +191,7 @@ function hash(password, options) {
       memoryCost: Math.floor(Math.log2(memory)),
       parallelism,
       salt,
-      raw: true,
+      raw: true
     };
     return argon2.hash(password, params).then(hash => {
       const phcstr = phc.serialize({
@@ -200,10 +200,10 @@ function hash(password, options) {
         params: {
           t: iterations,
           m: memory,
-          p: parallelism,
+          p: parallelism
         },
         salt,
-        hash,
+        hash
       });
       return phcstr;
     });
@@ -332,7 +332,7 @@ function verify(phcstr, password) {
     parallelism,
     salt,
     hashLength: keylen,
-    raw: true,
+    raw: true
   };
 
   return argon2.hash(password, params).then(newhash => {
@@ -353,5 +353,5 @@ function identifiers() {
 module.exports = {
   hash,
   verify,
-  identifiers,
+  identifiers
 };

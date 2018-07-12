@@ -8,7 +8,7 @@ async function bench(hpass, vpass, options) {
     ['--interval=25', `await require(".").verify("${hash}","${vpass}")`],
     {
       env: {FORCE_COLOR: true},
-      windowsVerbatimArguments: true,
+      windowsVerbatimArguments: true
     }
   );
 }
