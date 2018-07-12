@@ -3,8 +3,8 @@
 </h1>
 <p align="center">
   <!-- CI - TravisCI -->
-  <a href="https://travis-ci.org/simonepri/phc-argon2">
-    <img src="https://img.shields.io/travis/simonepri/phc-argon2/master.svg?label=MacOS%20%26%20Linux" alt="Mac/Linux Build Status" />
+  <a href="https://travis-ci.com/simonepri/phc-argon2">
+    <img src="https://img.shields.io/travis/com/simonepri/phc-argon2/master.svg?label=MacOS%20%26%20Linux" alt="Mac/Linux Build Status" />
   </a>
   <!-- CI - AppVeyor -->
   <a href="https://ci.appveyor.com/project/simonepri/phc-argon2">
