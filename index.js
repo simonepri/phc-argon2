@@ -188,7 +188,7 @@ function hash(password, options) {
       version,
       type: variants[variant],
       timeCost: iterations,
-      memoryCost: Math.floor(Math.log2(memory)),
+      memoryCost: memory,
       parallelism,
       salt,
       raw: true
@@ -328,7 +328,7 @@ function verify(phcstr, password) {
     version,
     type: variants[variant],
     timeCost: iterations,
-    memoryCost: Math.floor(Math.log2(memory)),
+    memoryCost: memory,
     parallelism,
     salt,
     hashLength: keylen,
