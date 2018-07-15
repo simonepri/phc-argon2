@@ -1,3 +1,5 @@
+'use strict';
+
 const execa = require('execa');
 const pbkdf2 = require('.');
 
