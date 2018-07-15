@@ -218,11 +218,6 @@ function verify(phcstr, password) {
   // Version Validation
   if (typeof phcobj.version === 'undefined') {
     phcobj.version = versions[0]; // Old Argon2 strings without the version.
-  } else if (
-    typeof phcobj.version !== 'number' ||
-    !Number.isInteger(phcobj.version)
-  ) {
-    return Promise.reject(new TypeError("The 'v' param must be an integer"));
   }
   if (versions.indexOf(phcobj.version) === -1) {
     return Promise.reject(

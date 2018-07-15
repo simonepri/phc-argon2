@@ -26,6 +26,22 @@ test('should throw an error if the identifier contains an unsupported variant', 
   t.is(err.message, 'Unsupported s variant function');
 });
 
+test('should throw an error if the version is not supported', async t => {
+  const wrong =
+    '$argon2id$v=10$m=4096,t=3,p=1$PcEZHj1maR/+ZQynyJHWZg$2jEN4xcww7CYp1jakZB1rxbYsZ55XH2HgjYRtdZtubI';
+
+  const err = await t.throws(m.verify(wrong, 'password'));
+  t.is(err.message, 'Unsupported 10 version');
+});
+
+test('should throw an error if the param section is empty', async t => {
+  const wrong =
+    '$argon2id$v=19$PcEZHj1maR/+ZQynyJHWZg$2jEN4xcww7CYp1jakZB1rxbYsZ55XH2HgjYRtdZtubI';
+
+  const err = await t.throws(m.verify(wrong, 'password'));
+  t.is(err.message, 'The param section cannot be empty');
+});
+
 test("should throw an error if the 't' parameter is missing", async t => {
   const wrong =
     '$argon2id$v=19$m=4096,p=1$PcEZHj1maR/+ZQynyJHWZg$2jEN4xcww7CYp1jakZB1rxbYsZ55XH2HgjYRtdZtubI';
