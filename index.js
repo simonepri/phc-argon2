@@ -231,6 +231,11 @@ function verify(phcstr, password) {
   }
   const version = phcobj.version;
 
+  // Parameters Existence Validation
+  if (typeof phcobj.params !== 'object') {
+    return Promise.reject(new TypeError('The param section cannot be empty'));
+  }
+
   // Iterations Validation
   if (
     typeof phcobj.params.t !== 'number' ||
@@ -305,7 +310,7 @@ function verify(phcstr, password) {
   };
 
   return argon2.hash(password, params).then(newhash => {
-    const match = tsse(hash.toString('base64'), newhash.toString('base64'));
+    const match = tsse(hash, newhash);
     return match;
   });
 }
