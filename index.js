@@ -46,6 +46,8 @@ const variants = Object.freeze({
 
 /**
  * Supported Argon2 versions.
+ * @private
+ * @type {number[]}
  */
 const versions = [
   0x10, // 1.0 (16)
