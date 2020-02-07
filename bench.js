@@ -67,6 +67,6 @@ Promise.resolve()
     console.log(results.stdout);
   })
 
-  .catch(err => {
-    console.error(err);
+  .catch(error => {
+    console.error(error);
   });

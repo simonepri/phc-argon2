@@ -93,6 +93,7 @@ function hash(password, options) {
       new TypeError("The 'iterations' option must be an integer")
     );
   }
+
   if (iterations < 1 || iterations > MAX_UINT32) {
     return Promise.reject(
       new TypeError(
@@ -107,6 +108,7 @@ function hash(password, options) {
       new TypeError("The 'parallelism' option must be an integer")
     );
   }
+
   if (parallelism < 1 || parallelism > MAX_UINT24) {
     return Promise.reject(
       new TypeError(
@@ -121,6 +123,7 @@ function hash(password, options) {
       new TypeError("The 'memory' option must be an integer")
     );
   }
+
   const minmem = 8 * parallelism;
   if (memory < minmem || memory > MAX_UINT32) {
     return Promise.reject(
@@ -136,6 +139,7 @@ function hash(password, options) {
       new TypeError("The 'variant' option must be a string")
     );
   }
+
   variant = variant.toLowerCase();
   if (!Object.prototype.hasOwnProperty.call(variants, variant)) {
     return Promise.reject(
@@ -194,8 +198,8 @@ function verify(phcstr, password) {
   let phcobj;
   try {
     phcobj = phc.deserialize(phcstr);
-  } catch (err) {
-    return Promise.reject(err);
+  } catch (error) {
+    return Promise.reject(error);
   }
 
   // Identifier Validation
@@ -210,22 +214,26 @@ function verify(phcstr, password) {
       new TypeError(`Incompatible ${phcobj.id} identifier found in the hash`)
     );
   }
+
   if (!Object.prototype.hasOwnProperty.call(variants, idparts[1])) {
     return Promise.reject(
       new TypeError(`Unsupported ${idparts[1]} variant function`)
     );
   }
+
   const variant = idparts[1];
 
   // Version Validation
   if (typeof phcobj.version === 'undefined') {
     phcobj.version = versions[0]; // Old Argon2 strings without the version.
   }
-  if (versions.indexOf(phcobj.version) === -1) {
+
+  if (!versions.includes(phcobj.version)) {
     return Promise.reject(
       new TypeError(`Unsupported ${phcobj.version} version`)
     );
   }
+
   const version = phcobj.version;
 
   // Parameters Existence Validation
@@ -240,6 +248,7 @@ function verify(phcstr, password) {
   ) {
     return Promise.reject(new TypeError("The 't' param must be an integer"));
   }
+
   if (phcobj.params.t < 1 || phcobj.params.t > MAX_UINT32) {
     return Promise.reject(
       new TypeError(
@@ -247,6 +256,7 @@ function verify(phcstr, password) {
       )
     );
   }
+
   const iterations = phcobj.params.t;
 
   // Parallelism Validation
@@ -256,6 +266,7 @@ function verify(phcstr, password) {
   ) {
     return Promise.reject(new TypeError("The 'p' param must be an integer"));
   }
+
   if (phcobj.params.p < 1 || phcobj.params.p > MAX_UINT24) {
     return Promise.reject(
       new TypeError(
@@ -263,6 +274,7 @@ function verify(phcstr, password) {
       )
     );
   }
+
   const parallelism = phcobj.params.p;
 
   // Memory Validation
@@ -272,6 +284,7 @@ function verify(phcstr, password) {
   ) {
     return Promise.reject(new TypeError("The 'm' param must be an integer"));
   }
+
   const minmem = 8 * phcobj.params.p;
   if (phcobj.params.m < minmem || phcobj.params.m > MAX_UINT32) {
     return Promise.reject(
@@ -280,18 +293,21 @@ function verify(phcstr, password) {
       )
     );
   }
+
   const memory = phcobj.params.m;
 
   // Salt Validation
   if (typeof phcobj.salt === 'undefined') {
     return Promise.reject(new TypeError('No salt found in the given string'));
   }
+
   const salt = phcobj.salt;
 
   // Hash Validation
   if (typeof phcobj.hash === 'undefined') {
     return Promise.reject(new TypeError('No hash found in the given string'));
   }
+
   const hash = phcobj.hash;
   const keylen = phcobj.hash.byteLength;
 

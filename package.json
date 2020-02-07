@@ -52,7 +52,7 @@
   },
   "scripts": {
     "bench": "node bench.js",
-    "test": "xo &&nyc ava",
+    "test": "xo && nyc ava",
     "release": "np",
     "update": "npm-check -u"
   },
@@ -62,10 +62,11 @@
   "dependencies": {
     "@kdf/salt": "^1.0.1",
     "@phc/format": "^0.5.0",
-    "argon2": "^0.19.3",
+    "argon2": "^0.25.1",
     "tsse": "^1.1.4"
   },
   "devDependencies": {
+    "@ava/babel": "^1.0.0",
     "ava": "*",
     "execa": "^1.0.0",
     "np": "*",
@@ -75,7 +76,8 @@
     "xo": "*"
   },
   "ava": {
-    "verbose": true
+    "verbose": true,
+    "babel": true
   },
   "nyc": {
     "reporter": [
