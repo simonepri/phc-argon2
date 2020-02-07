@@ -67,13 +67,13 @@
   },
   "devDependencies": {
     "@ava/babel": "^1.0.0",
-    "ava": "*",
+    "ava": "^3.2.0",
     "execa": "^1.0.0",
-    "np": "*",
-    "npm-check": "*",
-    "nyc": "*",
-    "sympact": "*",
-    "xo": "*"
+    "np": "^5.2.1",
+    "npm-check": "^5.9.0",
+    "nyc": "^15.0.0",
+    "sympact": "^0.0.7",
+    "xo": "^0.25.3"
   },
   "ava": {
     "verbose": true,

@@ -1,7 +1,7 @@
 'use strict';
 
-const pbkdf2 = require('.');
 const execa = require('execa');
+const pbkdf2 = require('.');
 
 async function bench(hpass, vpass, options) {
   const hash = await pbkdf2.hash(hpass, options);
