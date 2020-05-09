@@ -1,18 +1,9 @@
 {
-  "version": "1.0.9",
-  "name": "@phc/argon2",
+  "version": "1.0.0",
+  "name": "phc-argon2",
   "description": "Node.JS Argon2 password hashing algorithm following the PHC string format",
   "license": "MIT",
   "homepage": "https://github.com/simonepri/phc-argon2#readme",
-  "repository": "github:simonepri/phc-argon2",
-  "bugs": {
-    "url": "https://github.com/simonepri/phc-argon2/issues",
-    "email": "simonepri@outlook.com"
-  },
-  "author": "Simone Primarosa <simonepri@outlook.com> (https://simoneprimarosa.com)",
-  "contributors": [
-    "Simone Primarosa <simonepri@outlook.com> (https://simoneprimarosa.com)"
-  ],
   "keywords": [
     "brute",
     "brute force",
@@ -88,5 +79,16 @@
   "xo": {
     "prettier": true,
     "space": true
+  },
+  "directories": {
+    "test": "test"
+  },
+  "author": "virk",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thetutlage/phc-argon2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thetutlage/phc-argon2/issues"
   }
 }
