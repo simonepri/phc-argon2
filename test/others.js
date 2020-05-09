@@ -2,7 +2,7 @@ import test from 'ava';
 
 import m from '..';
 
-test('should hash and verify a short password', async t => {
+test('should hash and verify a short password', async (t) => {
   const password = 'p';
 
   const hash = await m.hash(password);
@@ -12,7 +12,7 @@ test('should hash and verify a short password', async t => {
   t.true(match);
 });
 
-test('should hash and verify a long password', async t => {
+test('should hash and verify a long password', async (t) => {
   const password =
     '012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234';
 
@@ -23,7 +23,7 @@ test('should hash and verify a long password', async t => {
   t.true(match);
 });
 
-test('should not be case insensitive', async t => {
+test('should not be case insensitive', async (t) => {
   const password = 'sec';
 
   const hash = await m.hash(password);

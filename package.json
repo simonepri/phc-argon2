@@ -48,7 +48,7 @@
     "index.js"
   ],
   "engines": {
-    "node": ">=6"
+    "node": ">=12"
   },
   "scripts": {
     "bench": "node bench.js",
@@ -62,18 +62,18 @@
   "dependencies": {
     "@kdf/salt": "^1.0.1",
     "@phc/format": "^0.5.0",
-    "argon2": "^0.25.1",
+    "argon2": "^0.26.2",
     "tsse": "^1.1.4"
   },
   "devDependencies": {
-    "@ava/babel": "^1.0.0",
-    "ava": "^3.2.0",
-    "execa": "^1.0.0",
-    "np": "^5.2.1",
-    "npm-check": "^5.9.0",
-    "nyc": "^15.0.0",
+    "@ava/babel": "^1.0.1",
+    "ava": "^3.8.2",
+    "execa": "^4.0.1",
+    "np": "^6.2.3",
+    "npm-check": "^5.9.2",
+    "nyc": "^15.0.1",
     "sympact": "^0.0.7",
-    "xo": "^0.25.3"
+    "xo": "^0.30.0"
   },
   "ava": {
     "verbose": true,

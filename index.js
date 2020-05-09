@@ -1,4 +1,4 @@
-/* eslint-disable capitalized-comments,complexity,prefer-destructuring */
+/* eslint-disable capitalized-comments,complexity,prefer-destructuring,promise/prefer-await-to-then,unicorn/prevent-abbreviations */
 'use strict';
 
 const argon2 = require('argon2');
@@ -158,7 +158,7 @@ function hash(password, options) {
     );
   }
 
-  return gensalt(saltSize).then(salt => {
+  return gensalt(saltSize).then((salt) => {
     const params = {
       version,
       type: variants[variant],
@@ -168,7 +168,7 @@ function hash(password, options) {
       salt,
       raw: true
     };
-    return argon2.hash(password, params).then(hash => {
+    return argon2.hash(password, params).then((hash) => {
       const phcstr = phc.serialize({
         id: `argon2${variant}`,
         version,
@@ -322,7 +322,7 @@ function verify(phcstr, password) {
     raw: true
   };
 
-  return argon2.hash(password, params).then(newhash => {
+  return argon2.hash(password, params).then((newhash) => {
     const match = tsse(hash, newhash);
     return match;
   });
@@ -334,7 +334,7 @@ function verify(phcstr, password) {
  * @returns {string[]} A list of identifiers supported by this hashing function.
  */
 function identifiers() {
-  return Object.keys(variants).map(variant => `argon2${variant}`);
+  return Object.keys(variants).map((variant) => `argon2${variant}`);
 }
 
 module.exports = {
