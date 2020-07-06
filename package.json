@@ -1,9 +1,9 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.9",
   "name": "phc-argon2",
   "description": "Node.JS Argon2 password hashing algorithm following the PHC string format",
   "license": "MIT",
-  "homepage": "https://github.com/simonepri/phc-argon2#readme",
+  "homepage": "https://github.com/thetutlage/phc-argon2#readme",
   "keywords": [
     "brute",
     "brute force",
