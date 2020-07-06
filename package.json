@@ -51,20 +51,20 @@
     "access": "public"
   },
   "dependencies": {
-    "@kdf/salt": "^1.0.1",
-    "@phc/format": "^0.5.0",
+    "@kdf/salt": "^2.0.1",
+    "@phc/format": "^1.0.0",
     "argon2": "^0.26.2",
-    "tsse": "^1.1.4"
+    "tsse": "^2.0.0"
   },
   "devDependencies": {
     "@ava/babel": "^1.0.1",
-    "ava": "^3.8.2",
-    "execa": "^4.0.1",
-    "np": "^6.2.3",
+    "ava": "^3.10.0",
+    "execa": "^4.0.2",
+    "np": "^6.3.0",
     "npm-check": "^5.9.2",
-    "nyc": "^15.0.1",
+    "nyc": "^15.1.0",
     "sympact": "^0.0.7",
-    "xo": "^0.30.0"
+    "xo": "^0.32.1"
   },
   "ava": {
     "verbose": true,
