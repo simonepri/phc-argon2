@@ -61,7 +61,7 @@
   },
   "dependencies": {
     "@kdf/salt": "^1.0.1",
-    "@phc/format": "^0.5.0",
+    "@phc/format": "^1.0.0",
     "argon2": "^0.19.3",
     "tsse": "^1.1.4"
   },
