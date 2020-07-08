@@ -67,7 +67,7 @@
   },
   "devDependencies": {
     "ava": "*",
-    "execa": "^1.0.0",
+    "execa": "^4.0.3",
     "np": "*",
     "npm-check": "*",
     "nyc": "*",
