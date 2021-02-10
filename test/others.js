@@ -1,6 +1,6 @@
 import test from 'ava';
 
-import m from '..';
+import m from '../index.js';
 
 test('should hash and verify a short password', async (t) => {
   const password = 'p';
