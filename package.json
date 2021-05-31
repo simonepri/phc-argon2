@@ -59,12 +59,12 @@
   "devDependencies": {
     "@ava/babel": "^1.0.1",
     "ava": "^3.15.0",
-    "execa": "^5.0.0",
-    "np": "^7.4.0",
+    "execa": "^5.0.1",
+    "np": "^7.5.0",
     "npm-check": "^5.9.2",
     "nyc": "^15.1.0",
     "sympact": "^0.0.7",
-    "xo": "^0.39.1"
+    "xo": "^0.40.1"
   },
   "ava": {
     "verbose": true,
