@@ -1,6 +1,5 @@
-import test from 'ava';
-
-import m from '../index.js';
+const test = require('ava');
+const m = require('..');
 
 test('should hash and verify a short password', async (t) => {
   const password = 'p';

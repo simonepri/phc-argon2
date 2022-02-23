@@ -1,6 +1,5 @@
-import test from 'ava';
-
-import m from '../index.js';
+const test = require('ava');
+const m = require('..');
 
 test("should throw an error if the 'iterations' option is not a number", async (t) => {
   const error = await t.throwsAsync(async () => {

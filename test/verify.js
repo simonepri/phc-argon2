@@ -1,6 +1,5 @@
-import test from 'ava';
-
-import m from '../index.js';
+const test = require('ava');
+const m = require('..');
 
 test('should verify a precomputed hash', async (t) => {
   // Precomputed hash for "password"

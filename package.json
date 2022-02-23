@@ -53,22 +53,20 @@
   "dependencies": {
     "@kdf/salt": "^2.0.1",
     "@phc/format": "^1.0.0",
-    "argon2": "^0.28.2",
+    "argon2": "^0.28.4",
     "tsse": "^2.0.0"
   },
   "devDependencies": {
-    "@ava/babel": "^1.0.1",
-    "ava": "^3.15.0",
+    "ava": "^4.0.1",
     "execa": "^5.1.1",
-    "np": "^7.5.0",
+    "np": "^7.6.0",
     "npm-check": "^5.9.2",
     "nyc": "^15.1.0",
     "sympact": "^0.0.7",
     "xo": "^0.39.1"
   },
   "ava": {
-    "verbose": true,
-    "babel": true
+    "verbose": true
   },
   "nyc": {
     "reporter": [
