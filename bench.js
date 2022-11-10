@@ -18,55 +18,54 @@ async function bench(hpass, vpass, options) {
 Promise.resolve()
   // Default configs
   .then(() => bench('r9(yaV@L', 'r9(yaV@L'))
-  .then(results => {
+  .then((results) => {
     console.log('► CMD:', results.cmd);
     console.log(results.stdout);
   })
 
   // Custom Iterations
   .then(() => bench('r9(yaV@L', 'r9(yaV@L', {iterations: 5}))
-  .then(results => {
+  .then((results) => {
     console.log('► CMD:', results.cmd);
     console.log(results.stdout);
   })
   .then(() => bench('r9(yaV@L', 'r9(yaV@L', {iterations: 10}))
-  .then(results => {
+  .then((results) => {
     console.log('► CMD:', results.cmd);
     console.log(results.stdout);
   })
   .then(() => bench('r9(yaV@L', 'r9(yaV@L', {iterations: 25}))
-  .then(results => {
+  .then((results) => {
     console.log('► CMD:', results.cmd);
     console.log(results.stdout);
   })
   .then(() => bench('r9(yaV@L', 'r9(yaV@L', {iterations: 50}))
-  .then(results => {
+  .then((results) => {
     console.log('► CMD:', results.cmd);
     console.log(results.stdout);
   })
   .then(() => bench('r9(yaV@L', 'r9(yaV@L', {iterations: 100}))
-  .then(results => {
+  .then((results) => {
     console.log('► CMD:', results.cmd);
     console.log(results.stdout);
   })
 
   // Custom Memory
   .then(() => bench('r9(yaV@L', 'r9(yaV@L', {memory: 2 ** 14}))
-  .then(results => {
+  .then((results) => {
     console.log('► CMD:', results.cmd);
     console.log(results.stdout);
   })
   .then(() => bench('r9(yaV@L', 'r9(yaV@L', {memory: 2 ** 16}))
-  .then(results => {
+  .then((results) => {
     console.log('► CMD:', results.cmd);
     console.log(results.stdout);
   })
   .then(() => bench('r9(yaV@L', 'r9(yaV@L', {memory: 2 ** 18}))
-  .then(results => {
+  .then((results) => {
     console.log('► CMD:', results.cmd);
     console.log(results.stdout);
   })
-
-  .catch(err => {
-    console.error(err);
+  .catch((error) => {
+    console.error(error);
   });

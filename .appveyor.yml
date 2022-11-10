@@ -2,9 +2,8 @@ build: off
 version: '{build}'
 environment:
   matrix:
-    - nodejs_version: '10'
-    - nodejs_version: '8'
-    - nodejs_version: '6'
+    - nodejs_version: Stable
+    - nodejs_version: 12.0.0
 platform:
   - x86
   - x64
@@ -21,5 +20,3 @@ test_script:
   - node -e "console.log('RAM:', require('os').totalmem().toLocaleString(), 'bytes')"
   - node -e "console.log('CPU:', require('os').cpus().length, 'x', require('os').cpus()[0].model)"
   - npm test
-after_test:
-- npx codecov

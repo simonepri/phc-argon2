@@ -1,18 +1,9 @@
 {
-  "version": "1.0.9",
-  "name": "@phc/argon2",
+  "version": "1.1.4",
+  "name": "phc-argon2",
   "description": "Node.JS Argon2 password hashing algorithm following the PHC string format",
   "license": "MIT",
-  "homepage": "https://github.com/simonepri/phc-argon2#readme",
-  "repository": "github:simonepri/phc-argon2",
-  "bugs": {
-    "url": "https://github.com/simonepri/phc-argon2/issues",
-    "email": "simonepri@outlook.com"
-  },
-  "author": "Simone Primarosa <simonepri@outlook.com> (https://simoneprimarosa.com)",
-  "contributors": [
-    "Simone Primarosa <simonepri@outlook.com> (https://simoneprimarosa.com)"
-  ],
+  "homepage": "https://github.com/thetutlage/phc-argon2#readme",
   "keywords": [
     "brute",
     "brute force",
@@ -48,11 +39,11 @@
     "index.js"
   ],
   "engines": {
-    "node": ">=6"
+    "node": ">=12"
   },
   "scripts": {
     "bench": "node bench.js",
-    "test": "xo &&nyc ava",
+    "test": "xo && nyc ava",
     "release": "np",
     "update": "npm-check -u"
   },
@@ -60,19 +51,19 @@
     "access": "public"
   },
   "dependencies": {
-    "@kdf/salt": "^1.0.1",
-    "@phc/format": "^0.5.0",
-    "argon2": "^0.19.3",
-    "tsse": "^1.1.4"
+    "@kdf/salt": "^2.0.1",
+    "@phc/format": "^1.0.0",
+    "argon2": "^0.30.2",
+    "tsse": "^2.0.0"
   },
   "devDependencies": {
-    "ava": "*",
-    "execa": "^1.0.0",
-    "np": "*",
-    "npm-check": "*",
-    "nyc": "*",
-    "sympact": "*",
-    "xo": "*"
+    "ava": "^4.0.1",
+    "execa": "^5.1.1",
+    "np": "^7.6.2",
+    "npm-check": "^5.9.2",
+    "nyc": "^15.1.0",
+    "sympact": "^0.0.7",
+    "xo": "^0.39.1"
   },
   "ava": {
     "verbose": true
@@ -86,5 +77,16 @@
   "xo": {
     "prettier": true,
     "space": true
+  },
+  "directories": {
+    "test": "test"
+  },
+  "author": "virk",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thetutlage/phc-argon2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thetutlage/phc-argon2/issues"
   }
 }

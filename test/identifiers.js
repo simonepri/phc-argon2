@@ -1,7 +1,6 @@
-import test from 'ava';
+const test = require('ava');
+const m = require('..');
 
-import m from '..';
-
-test('should return the full list of identifiers', t => {
+test('should return the full list of identifiers', (t) => {
   t.deepEqual(m.identifiers(), ['argon2i', 'argon2d', 'argon2id']);
 });
