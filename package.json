@@ -53,13 +53,13 @@
   "dependencies": {
     "@kdf/salt": "^2.0.1",
     "@phc/format": "^1.0.0",
-    "argon2": "^0.28.4",
+    "argon2": "^0.30.2",
     "tsse": "^2.0.0"
   },
   "devDependencies": {
     "ava": "^4.0.1",
     "execa": "^5.1.1",
-    "np": "^7.6.0",
+    "np": "^7.6.2",
     "npm-check": "^5.9.2",
     "nyc": "^15.1.0",
     "sympact": "^0.0.7",
